@@ -1,0 +1,173 @@
+*sudoku.txt*  Sudoku plugin for Vim                                   *sudoku*
+
+Author: Ben Staniford                                     *sudoku-author*
+License: MIT                                             *sudoku-license*
+Version: 1.0.0                                           *sudoku-version*
+
+==============================================================================
+CONTENTS                                                 *sudoku-contents*
+
+    1. Introduction ........... |sudoku-introduction|
+    2. Installation ........... |sudoku-installation|
+    3. Commands ............... |sudoku-commands|
+    4. Configuration .......... |sudoku-configuration|
+    5. Examples ............... |sudoku-examples|
+    6. Troubleshooting ........ |sudoku-troubleshooting|
+
+==============================================================================
+1. INTRODUCTION                                          *sudoku-introduction*
+
+This plugin provides Sudoku functionality for Vim, including:
+- Solving Sudoku puzzles
+- Generating new puzzles with varying difficulty
+- Providing single clues for stuck puzzles
+- Automatic weekly puzzle updates in specific files
+
+The plugin works with standard Sudoku grid format using ASCII art style
+tables with | and - characters.
+
+==============================================================================
+2. INSTALLATION                                          *sudoku-installation*
+
+Prerequisites:
+- Vim with Python3 support (check with: vim --version | grep python3)
+
+Installation methods:
+
+Manual installation:
+1. Copy the plugin files to your Vim directory structure:
+   ~/.vim/pack/plugins/start/vim-sudoku/
+
+Vim 8 packages:
+1. Create the directory: ~/.vim/pack/plugins/start/vim-sudoku/
+2. Copy plugin files to the created directory
+
+Plugin managers:
+- Add the plugin to your preferred plugin manager configuration
+
+==============================================================================
+3. COMMANDS                                              *sudoku-commands*
+
+                                                         *:SudokuSolve*
+:SudokuSolve
+    Solve the Sudoku puzzle under the cursor. The cursor must be positioned
+    within a Sudoku grid (lines starting with | or -). The plugin will
+    automatically detect the grid boundaries.
+
+                                                         *:SudokuEmpty*
+:SudokuEmpty
+    Insert an empty Sudoku grid at the current cursor position. The grid
+    will be inserted after the current line.
+
+                                                         *:SudokuGenerate*
+:SudokuGenerate [clues]
+    Generate a new Sudoku puzzle with the specified number of clues.
+    If no number is provided, uses the default level from configuration.
+    Valid range: 17-81 clues.
+
+                                                         *:SudokuGiveClue*
+:SudokuGiveClue
+    Provide a single clue for the current puzzle. Places an 'x' in a cell
+    that has only one possible value. The cursor must be within a Sudoku grid.
+
+                                                         *:SudokuAddWeeklyPuzzle*
+:SudokuAddWeeklyPuzzle
+    Add a new weekly Sudoku puzzle section at the current cursor position.
+    The heading style will match the current file type (markdown or vimwiki).
+
+==============================================================================
+4. CONFIGURATION                                         *sudoku-configuration*
+
+The plugin can be configured using the following global variables:
+
+                                                         *g:sudoku_date_format*
+g:sudoku_date_format
+    Date format used for weekly puzzles. Uses strftime() format strings.
+    Default: '%m-%d-%Y'
+    Example: let g:sudoku_date_format = '%Y-%m-%d'
+
+                                                         *g:sudoku_current_level*
+g:sudoku_current_level
+    Default number of clues for generated puzzles.
+    Valid range: 17-81
+    Default: 35
+    Example: let g:sudoku_current_level = 40
+
+                                                         *g:sudoku_weekly_files*
+g:sudoku_weekly_files
+    List of file patterns where weekly puzzles should be auto-updated.
+    Default: ['*diary*', '*journal*', '*weekly*']
+    Example: let g:sudoku_weekly_files = ['*.md', 'diary.txt']
+
+Configuration example in your vimrc:
+>
+    let g:sudoku_date_format = '%Y-%m-%d'
+    let g:sudoku_current_level = 40
+    let g:sudoku_weekly_files = ['diary.md', 'journal.txt']
+<
+
+==============================================================================
+5. EXAMPLES                                              *sudoku-examples*
+
+Basic usage:
+1. Generate an empty grid:
+   :SudokuEmpty
+
+2. Generate a puzzle with 30 clues:
+   :SudokuGenerate 30
+
+3. Solve a puzzle:
+   Position cursor within the grid and run :SudokuSolve
+
+4. Get a hint:
+   Position cursor within the grid and run :SudokuGiveClue
+
+Grid format:
+The plugin expects Sudoku grids in this format:
+>
+    | 5 3   |   7   |       |
+    | 6     | 1 9 5 |       |
+    |   9 8 |       |   6   |
+    -------------------------
+    | 8     |   6   |     3 |
+    | 4     | 8   3 |     1 |
+    | 7     |   2   |     6 |
+    -------------------------
+    |   6   |       | 2 8   |
+    |       | 4 1 9 |     5 |
+    |       |   8   |   7 9 |
+<
+
+Weekly puzzle example:
+For files matching the configured patterns, the plugin will automatically
+update "This Week's Sudoku" headings with new dates and puzzles.
+
+==============================================================================
+6. TROUBLESHOOTING                                       *sudoku-troubleshooting*
+
+Common issues:
+
+"No Python3 support":
+- Ensure Vim was compiled with Python3 support
+- Check with: vim --version | grep python3
+
+"Not inside a Sudoku block":
+- Position cursor within a grid (lines starting with | or -)
+- The plugin auto-detects grid boundaries
+
+"Invalid input" errors:
+- Ensure grid has exactly 9 rows of data
+- Each row must have exactly 9 cells
+- Use spaces or dots for empty cells
+
+"No solution exists":
+- Check that the puzzle is valid and solvable
+- Verify no duplicate numbers in rows, columns, or 3x3 boxes
+
+Grid formatting issues:
+- Ensure proper spacing in grid format
+- Each cell should be 2 characters wide
+- Use | for column separators and - for row separators
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:
