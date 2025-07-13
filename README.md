@@ -2,6 +2,10 @@
 
 A comprehensive Sudoku plugin for Vim that provides solving, generation, and puzzle management capabilities.
 
+## Screenshot
+
+<img width="664" height="654" alt="image" src="https://github.com/user-attachments/assets/fa216ab7-a501-4ef1-923a-f3390e5283e4" />
+
 ## Features
 
 - **Solve Sudoku puzzles** - Automatically solve any valid Sudoku puzzle
