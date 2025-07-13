@@ -222,7 +222,7 @@ Contributions are welcome! Please feel free to submit issues, feature requests, 
 
 ## License
 
-MIT License - see LICENSE file for details.
+GPL v3 License - see LICENSE file for details.
 
 ## Author
 
