@@ -14,7 +14,7 @@ set cpo&vim
 
 " Global configuration variables
 if !exists('g:sudoku_date_format')
-    let g:sudoku_date_format = '%d-%m-%Y'
+    let g:sudoku_date_format = '%m-%d-%Y'
 endif
 
 if !exists('g:sudoku_current_level')

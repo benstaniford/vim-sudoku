@@ -114,7 +114,7 @@ The plugin works with ASCII art Sudoku grids:
 " Date format for weekly puzzles (default: '%m-%d-%Y')
 let g:sudoku_date_format = '%Y-%m-%d'
 
-" Default difficulty level - number of clues (default: 35)
+" Default difficulty level - number of clues (default: 32)
 let g:sudoku_current_level = 40
 
 " Files where weekly puzzles auto-update (default: ['*diary*', '*journal*', '*weekly*'])
@@ -127,7 +127,7 @@ Add to your `.vimrc`:
 
 ```vim
 " Sudoku plugin configuration
-let g:sudoku_date_format = '%Y-%m-%d'
+let g:sudoku_date_format = '%d-%m-%Y'
 let g:sudoku_current_level = 45
 let g:sudoku_weekly_files = ['diary.md', 'journal.txt', 'weekly-*.md']
 ```
