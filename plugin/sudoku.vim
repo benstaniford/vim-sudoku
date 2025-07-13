@@ -28,8 +28,7 @@ endif
 " Commands
 command! SudokuSolve call sudoku#solve()
 command! SudokuEmpty call sudoku#empty()
-command! -nargs=1 SudokuGenerate call sudoku#generate(<f-args>)
-command! SudokuCurrentLevel call sudoku#generate(g:sudoku_current_level)
+command! -nargs=? SudokuGenerate call sudoku#generate(<f-args>)
 command! SudokuGiveClue call sudoku#give_clue()
 command! SudokuAddWeeklyPuzzle call sudoku#add_weekly_puzzle()
 command! SudokuUpdateWeeklyPuzzle call sudoku#update_weekly_puzzle(1)

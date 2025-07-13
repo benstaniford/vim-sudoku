@@ -62,7 +62,7 @@ Plugin managers:
                                                          *:SudokuGenerate*
 :SudokuGenerate [clues]
     Generate a new Sudoku puzzle with the specified number of clues.
-    If no number is provided, uses the default level from configuration.
+    If no number is provided, uses the default level from g:sudoku_current_level.
     Valid range: 17-81 clues.
 
                                                          *:SudokuGiveClue*

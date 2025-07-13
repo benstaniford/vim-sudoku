@@ -109,7 +109,8 @@ function! sudoku#empty()
     \ ])
 endfunction
 
-function! sudoku#generate(clues)
+function! sudoku#generate(...)
+    let clues = a:0 > 0 ? a:1 : g:sudoku_current_level
     python3 << EOF
 import vim
 import random
@@ -193,7 +194,7 @@ def print_grid(grid):
         output.append('| ' + ' '.join(str(num) if num != 0 else ' ' for num in row[:3]) + ' | ' + ' '.join(str(num) if num != 0 else ' ' for num in row[3:6]) + ' | ' + ' '.join(str(num) if num != 0 else ' ' for num in row[6:]) + ' |')
     return output
 
-clues = int(vim.eval("a:clues"))
+clues = int(vim.eval("clues"))
 if clues < 17 or clues > 81:
     raise ValueError("Invalid number of clues, must be between 17 and 81")
 
