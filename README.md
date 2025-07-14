@@ -43,7 +43,7 @@ A comprehensive Sudoku plugin for Vim that provides solving, generation, and puz
 1. Clone or download the plugin to your pack directory:
    ```bash
    cd ~/.vim/pack/plugins/start/
-   git clone <repository-url> vim-sudoku
+   git clone https://github.com/benstaniford/vim-sudoku.git vim-sudoku
    ```
 
 #### Plugin Managers
@@ -52,12 +52,12 @@ Add to your plugin manager configuration:
 
 **vim-plug:**
 ```vim
-Plug 'your-username/vim-sudoku'
+Plug 'benstaniford/vim-sudoku'
 ```
 
 **Vundle:**
 ```vim
-Plugin 'your-username/vim-sudoku'
+Plugin 'benstaniford/vim-sudoku'
 ```
 
 ## Usage
